@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Beverages Menu - Food Court</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div id="menuPage">
+
+<h1>🥤 Beverages Menu</h1>
+
+<div class="menu">
+
+<div class="sections-container">
+
+<div class="menu-section">
+<h2>Hot & Cold Drinks</h2>
+
+<div class="food-images">
+
+<div>
+<img src="https://tse3.mm.bing.net/th/id/OIP.1GZjacd3VZGjNbTXgWqffAHaE8?pid=Api&P=0&h=180" width="120">
+<p>Cold Coffee</p>
+<label>Cold Coffee ₹90</label>
+<input type="number" id="coffee" value="0"><br><br>
+</div>
+
+<div>
+<img src="https://www.acouplecooks.com/wp-content/uploads/2021/04/Mango-Lassi-005.jpg" width="120">
+<p>Mango Lassi</p>
+<label>Mango Lassi ₹60</label>
+<input type="number" id="lassi" value="0"><br><br>
+</div>
+
+<div>
+<img src="https://www.licious.in/blog/wp-content/uploads/2020/12/Lemon-Soda.jpg" width="120">
+<p>Lemon Soda</p>
+<label>Lemon Soda ₹40</label>
+<input type="number" id="soda" value="0"><br><br>
+</div>
+
+<div>
+<img src="https://www.indianhealthyrecipes.com/wp-content/uploads/2021/07/masala-chai-recipe.jpg" width="120">
+<p>Masala Chai</p>
+<label>Masala Chai ₹30</label>
+<input type="number" id="chai" value="0"><br><br>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<br>
+
+<h3>💳 Payment Method</h3>
+<select id="paymentMethod" style="padding: 10px; width: 100%; border-radius: 5px; margin-bottom: 15px;">
+<option value="">Select Payment Method</option>
+<option value="cash">💵 Cash</option>
+<option value="card">💳 Card</option>
+<option value="phonepe">📱 PhonePe</option>
+<option value="googlepay">🔵 Google Pay</option>
+<option value="paytm">💰 Paytm</option>
+</select>
+
+<button onclick="calculateBeverageBill()">Generate Bill</button>
+<button onclick="resetBeverageBill()" class="reset-btn">Reset</button>
+<button onclick="window.location.href='index.html'" style="background: #95a5a6; margin-left: 10px;">← Back to Home</button>
+
+</div>
+
+<div class="bill">
+<h2>📋 Your Bill</h2>
+<div id="result" class="bill-content">
+<p class="empty-bill">No items selected yet. Add items to generate bill.</p>
+</div>
+</div>
+
+</div>
+
+<script src="beverages.js"></script>
+
+</body>
+</html>

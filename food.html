@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Food Menu - Food Court</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div id="menuPage">
+
+<h1>🍽️ Food Menu</h1>
+
+<div class="menu">
+
+<div class="sections-container">
+
+<div class="menu-section">
+<h2>Main Course</h2>
+
+<div class="food-images">
+
+<div>
+<img src="https://www.irishexaminer.com/cms_media/module_img/6161/3080579_7_seoimage4x3_iStock-468676382.jpg" width="120">
+<p>Burger</p>
+<label>Burger ₹80</label>
+<input type="number" id="burger" value="0"><br><br>
+</div>
+
+<div>
+<img src="https://upload.wikimedia.org/wikipedia/commons/d/d3/Supreme_pizza.jpg" width="120">
+<p>Pizza</p>
+<label>Pizza ₹150</label>
+<input type="number" id="pizza" value="0"><br><br>
+</div>
+
+<div>
+<img src="https://www.inspiredtaste.net/wp-content/uploads/2022/10/Baked-French-Fries-Recipe-1200.jpg" width="120">
+<p>Fries</p>
+<label>Fries ₹70</label>
+<input type="number" id="fries" value="0"><br><br>
+</div>
+
+<div>
+<img src="https://www.inspiredtaste.net/wp-content/uploads/2019/03/Spaghetti-Pasta-Recipe-1-1200.jpg" width="120">
+<p>Pasta</p>
+<label>Pasta ₹120</label>
+<input type="number" id="pasta" value="0"><br><br>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<br>
+
+<h3>💳 Payment Method</h3>
+<select id="paymentMethod" style="padding: 10px; width: 100%; border-radius: 5px; margin-bottom: 15px;">
+<option value="">Select Payment Method</option>
+<option value="cash">💵 Cash</option>
+<option value="card">💳 Card</option>
+<option value="phonepe">📱 PhonePe</option>
+<option value="googlepay">🔵 Google Pay</option>
+<option value="paytm">💰 Paytm</option>
+</select>
+
+<button onclick="calculateFoodBill()">Generate Bill</button>
+<button onclick="resetFoodBill()" class="reset-btn">Reset</button>
+<button onclick="window.location.href='index.html'" style="background: #95a5a6; margin-left: 10px;">← Back to Home</button>
+
+</div>
+
+<div class="bill">
+<h2>📋 Your Bill</h2>
+<div id="result" class="bill-content">
+<p class="empty-bill">No items selected yet. Add items to generate bill.</p>
+</div>
+</div>
+
+</div>
+
+<script src="food.js"></script>
+
+</body>
+</html>

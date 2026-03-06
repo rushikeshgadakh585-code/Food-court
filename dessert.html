@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Desserts Menu - Food Court</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div id="menuPage">
+
+<h1>🍨 Desserts Menu</h1>
+
+<div class="menu">
+
+<div class="sections-container">
+
+<div class="menu-section">
+<h2>Ice Creams</h2>
+
+<div class="food-images">
+
+<div>
+<img src="https://www.seriouseats.com/thmb/1k7rHaHHLZzFGxrcHBLLnzNCK_I=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/__opt__aboutcom__coeus__resources__content_migration__serious_eats__seriouseats.com__recipes__images__2015__09__20150914-vanilla-ice-cream-vicky-wasik-19-f4f6dc6e8b924e06b4f7c3f3e2c6a7e8.jpg" width="120">
+<p>Vanilla Ice Cream</p>
+<label>Vanilla Ice Cream ₹50</label>
+<input type="number" id="vanilla" value="0"><br><br>
+</div>
+
+<div>
+<img src="https://www.seriouseats.com/thmb/nRJ3_KHiJmb3FMqBGxN8P8OqZnU=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/__opt__aboutcom__coeus__resources__content_migration__serious_eats__seriouseats.com__recipes__images__2015__07__20150706-chocolate-ice-cream-vicky-wasik-1-f6e9f6e8b924e06b4f7c3f3e2c6a7e8.jpg" width="120">
+<p>Chocolate Ice Cream</p>
+<label>Chocolate Ice Cream ₹60</label>
+<input type="number" id="chocolate" value="0"><br><br>
+</div>
+
+<div>
+<img src="https://www.seriouseats.com/thmb/kE1KJfmUCHxJlLnGvqH8qXqZqZU=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/__opt__aboutcom__coeus__resources__content_migration__serious_eats__seriouseats.com__recipes__images__2015__07__20150706-strawberry-ice-cream-vicky-wasik-1.jpg" width="120">
+<p>Strawberry Ice Cream</p>
+<label>Strawberry Ice Cream ₹55</label>
+<input type="number" id="strawberry" value="0"><br><br>
+</div>
+
+</div>
+
+</div>
+
+<div class="menu-section">
+<h2>Sweet Treats</h2>
+
+<div class="food-images">
+
+<div>
+<img src="https://www.vegrecipesofindia.com/wp-content/uploads/2021/04/brownie-recipe-1.jpg" width="120">
+<p>Brownie</p>
+<label>Brownie ₹80</label>
+<input type="number" id="brownie" value="0"><br><br>
+</div>
+
+<div>
+<img src="https://www.cookwithmanali.com/wp-content/uploads/2020/05/Gulab-Jamun.jpg" width="120">
+<p>Gulab Jamun</p>
+<label>Gulab Jamun ₹40</label>
+<input type="number" id="gulabjamun" value="0"><br><br>
+</div>
+
+<div>
+<img src="https://www.vegrecipesofindia.com/wp-content/uploads/2021/07/rasmalai-recipe-1.jpg" width="120">
+<p>Rasmalai</p>
+<label>Rasmalai ₹70</label>
+<input type="number" id="rasmalai" value="0"><br><br>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<br>
+
+<h3>💳 Payment Method</h3>
+<select id="paymentMethod" style="padding: 10px; width: 100%; border-radius: 5px; margin-bottom: 15px;">
+<option value="">Select Payment Method</option>
+<option value="cash">💵 Cash</option>
+<option value="card">💳 Card</option>
+<option value="phonepe">📱 PhonePe</option>
+<option value="googlepay">🔵 Google Pay</option>
+<option value="paytm">💰 Paytm</option>
+</select>
+
+<button onclick="calculateDessertBill()">Generate Bill</button>
+<button onclick="resetDessertBill()" class="reset-btn">Reset</button>
+<button onclick="window.location.href='index.html'" style="background: #95a5a6; margin-left: 10px;">← Back to Main Menu</button>
+
+</div>
+
+<div class="bill">
+<h2>📋 Your Bill</h2>
+<div id="result" class="bill-content">
+<p class="empty-bill">No items selected yet. Add items to generate bill.</p>
+</div>
+</div>
+
+</div>
+
+<script src="dessert.js"></script>
+
+</body>
+</html>

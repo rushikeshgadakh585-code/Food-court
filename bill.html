@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Bill Receipt - Food Court</title>
+<link rel="stylesheet" href="style.css">
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('https://i.pinimg.com/originals/1b/0a/d2/1b0ad216e7ebd311f08fce82179c9cec.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: white;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+.receipt-container {
+    background: white;
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    color: #333;
+}
+
+.receipt-header {
+    text-align: center;
+    border-bottom: 2px dashed #333;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+.receipt-header h1 {
+    color: #2c3e50;
+    margin: 0;
+}
+
+.receipt-date {
+    color: #666;
+    font-size: 14px;
+}
+
+.receipt-items {
+    margin: 20px 0;
+}
+
+.receipt-section {
+    margin: 20px 0;
+}
+
+.receipt-section h3 {
+    color: #2c3e50;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 5px;
+}
+
+.item-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px dotted #ddd;
+}
+
+.receipt-total {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 2px solid #333;
+}
+
+.total-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
+    font-size: 16px;
+}
+
+.grand-total {
+    font-size: 24px;
+    font-weight: bold;
+    color: #27ae60;
+    margin-top: 10px;
+}
+
+.receipt-footer {
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 2px dashed #333;
+    color: #666;
+}
+
+.action-buttons {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.action-buttons button {
+    margin: 0 10px;
+    padding: 12px 30px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.print-btn {
+    background: #3498db;
+    color: white;
+}
+
+.print-btn:hover {
+    background: #2980b9;
+}
+
+.back-btn {
+    background: #95a5a6;
+    color: white;
+}
+
+.back-btn:hover {
+    background: #7f8c8d;
+}
+
+@media print {
+    .action-buttons {
+        display: none;
+    }
+    body {
+        background: white !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="receipt-container">
+    <div class="receipt-header">
+        <h1>🍽️ Food Court</h1>
+        <h2>Bill Receipt</h2>
+        <p class="receipt-date" id="billDate"></p>
+    </div>
+
+    <div class="receipt-items" id="billContent">
+        <!-- Bill content will be inserted here -->
+    </div>
+
+    <div class="receipt-footer">
+        <p>Thank you for your order! 😊</p>
+        <p>Visit us again!</p>
+    </div>
+
+    <div class="action-buttons">
+        <button onclick="window.print()" class="print-btn">🖨️ Print Bill</button>
+        <button onclick="goBack()" class="back-btn">← Back to Menu</button>
+    </div>
+</div>
+
+<script>
+// Get order data from localStorage
+const orderData = JSON.parse(localStorage.getItem('orderData'));
+
+// Display current date and time
+const now = new Date();
+document.getElementById('billDate').innerHTML = now.toLocaleString();
+
+if (orderData) {
+    let billHTML = '';
+
+    // Food Section
+    if (orderData.foodItems && orderData.foodItems.length > 0) {
+        billHTML += '<div class="receipt-section">';
+        billHTML += '<h3>🍽️ Food Items</h3>';
+        orderData.foodItems.forEach(item => {
+            billHTML += `<div class="item-row">
+                <span>${item.emoji} ${item.name} x${item.quantity}</span>
+                <span>₹${item.total}</span>
+            </div>`;
+        });
+        billHTML += `<div class="item-row" style="font-weight: bold;">
+            <span>Food Total</span>
+            <span>₹${orderData.foodTotal}</span>
+        </div>`;
+        billHTML += '</div>';
+    }
+
+    // Beverages Section
+    if (orderData.beverageItems && orderData.beverageItems.length > 0) {
+        billHTML += '<div class="receipt-section">';
+        billHTML += '<h3>🥤 Beverages</h3>';
+        orderData.beverageItems.forEach(item => {
+            billHTML += `<div class="item-row">
+                <span>${item.emoji} ${item.name} x${item.quantity}</span>
+                <span>₹${item.total}</span>
+            </div>`;
+        });
+        billHTML += `<div class="item-row" style="font-weight: bold;">
+            <span>Beverages Total</span>
+            <span>₹${orderData.beverageTotal}</span>
+        </div>`;
+        billHTML += '</div>';
+    }
+
+    // Desserts Section
+    if (orderData.dessertItems && orderData.dessertItems.length > 0) {
+        billHTML += '<div class="receipt-section">';
+        billHTML += '<h3>🍨 Desserts</h3>';
+        orderData.dessertItems.forEach(item => {
+            billHTML += `<div class="item-row">
+                <span>${item.emoji} ${item.name} x${item.quantity}</span>
+                <span>₹${item.total}</span>
+            </div>`;
+        });
+        billHTML += `<div class="item-row" style="font-weight: bold;">
+            <span>Desserts Total</span>
+            <span>₹${orderData.dessertTotal}</span>
+        </div>`;
+        billHTML += '</div>';
+    }
+
+    // Totals
+    billHTML += '<div class="receipt-total">';
+    billHTML += `<div class="total-row">
+        <span>Subtotal:</span>
+        <span>₹${orderData.subtotal}</span>
+    </div>`;
+    billHTML += `<div class="total-row">
+        <span>GST (5%):</span>
+        <span>₹${orderData.gst}</span>
+    </div>`;
+    billHTML += `<div class="total-row grand-total">
+        <span>💳 TOTAL:</span>
+        <span>₹${orderData.total}</span>
+    </div>`;
+    billHTML += `<div class="total-row" style="margin-top: 15px; color: #2c3e50; font-size: 18px;">
+        <span>Payment Method:</span>
+        <span><strong>${orderData.paymentMethod}</strong></span>
+    </div>`;
+    billHTML += '</div>';
+
+    document.getElementById('billContent').innerHTML = billHTML;
+} else {
+    document.getElementById('billContent').innerHTML = '<p style="text-align: center; color: red;">No order data found!</p>';
+}
+
+function goBack() {
+    window.location.href = 'index.html';
+}
+</script>
+
+</body>
+</html>
